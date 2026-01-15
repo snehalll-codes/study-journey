@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study Journey ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f3 25%, #fff0f8 50%, #ffe8f5 75%, #fff5fb 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 182, 223, 0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #ff8fab 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            color: #ff6b9d;
+            opacity: 0.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease 0.3s backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            border: 2px solid rgba(255, 182, 223, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 32px rgba(255, 107, 157, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(255, 168, 197, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(255, 107, 157, 0.2);
+            border-color: rgba(255, 107, 157, 0.5);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 8px rgba(255, 107, 157, 0.3));
+        }
+
+        .stat-card h3 {
+            font-size: 0.9em;
+            color: #c06c84;
+            margin-bottom: 10px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .stat-card .value {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .motivation-banner {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 240, 248, 0.9) 100%);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            margin-bottom: 50px;
+            border: 2px solid rgba(255, 182, 223, 0.3);
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.15);
+            animation: fadeIn 1s ease 0.6s backwards;
+        }
+
+        .motivation-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #c06c84;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .year-progress {
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease 0.9s backwards;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 182, 223, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 107, 157, 0.1);
+        }
+
+        .progress-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .progress-bar-container {
+            background: linear-gradient(90deg, #ffe0eb 0%, #ffeef8 100%);
+            border-radius: 50px;
+            height: 50px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 10px rgba(192, 108, 132, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d 0%, #ffa8c5 50%, #ff8fab 100%);
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                left: 100%;
+            }
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 35px;
+            border: 2px solid rgba(255, 182, 223, 0.3);
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.12);
+            transition: all 0.4s ease;
+            animation: fadeIn 1s ease backwards;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(255, 107, 157, 0.2);
+        }
+
+        .card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #ff6b9d;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .timer-display {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4em;
+            text-align: center;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            margin: 30px 0;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 10px rgba(255, 107, 157, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 6px 20px rgba(255, 107, 157, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid rgba(255, 182, 223, 0.4);
+            border-radius: 15px;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
+            background: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ff6b9d;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .todo-input, .goal-input {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .todo-item, .entry, .goal-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 245, 251, 0.9) 100%);
+            padding: 18px 20px;
+            border-radius: 15px;
+            margin-bottom: 12px;
+            border-left: 5px solid #ffa8c5;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.08);
+        }
+
+        .todo-item:hover, .entry:hover, .goal-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 25px rgba(255, 107, 157, 0.15);
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .todo-item input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            accent-color: #ff6b9d;
+        }
+
+        .todo-item.completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+
+        .todo-item span {
+            flex: 1;
+            font-size: 1.05em;
+        }
+
+        .delete-btn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff4757 100%);
+            padding: 8px 18px;
+            font-size: 0.85em;
+        }
+
+        .entry-date {
+            font-weight: 600;
+            color: #ff6b9d;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .subject-item {
+            margin-bottom: 20px;
+        }
+
+        .subject-name {
+            font-weight: 600;
+            color: #c06c84;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .scroll-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scroll-container::-webkit-scrollbar-track {
+            background: rgba(255, 182, 223, 0.1);
+            border-radius: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa8c5 100%);
+            border-radius: 10px;
+        }
+
+        .mini-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 18px;
+            background: rgba(255, 240, 248, 0.6);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .mini-stat-label {
+            color: #c06c84;
+            font-weight: 500;
+        }
+
+        .mini-stat-value {
+            font-weight: 700;
+            color: #ff6b9d;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .subtitle {
+                font-size: 1.3em;
+            }
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            .timer-display {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Study Journey</h1>
+            <div class="subtitle">✨ Dream • Study • Achieve ✨</div>
+        </header>
+
+        <div class="hero-stats">
+            <div class="stat-card" style="animation-delay: 0.1s">
+                <div class="stat-icon">📅</div>
+                <h3>Days Passed</h3>
+                <div class="value" id="daysPassed">0</div>
+            </div>
+            <div class="stat-card" style="animation-delay: 0.2s">
+                <div class="stat-icon">⏳</div>
+                <h3>Days Left</h3>
+                <div class="value" id="daysRemaining">0</div>
+            </div>
+            <div class="stat-card" style="animation-delay: 0.3s">
+                <div class="stat-icon">📊</div>
+                <h3>Year Progress</h3>
+                <div class="value" id="yearProgress">0%</div>
+            </div>
+            <div class="stat-card" style="animation-delay: 0.4s">
+                <div class="stat-icon">📚</div>
+                <h3>Today's Study</h3>
+                <div class="value" id="todayStudy">0.0h</div>
+            </div>
+        </div>
+
+        <div class="motivation-banner">
+            <div class="motivation-text" id="motivation"></div>
+        </div>
+
+        <div class="year-progress">
+            <div class="progress-container">
+                <div class="progress-label">✨ Your Year at a Glance</div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar">0%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-layout">
+            <div class="card" style="animation-delay: 1.2s">
+                <h2>⏱️ Study Timer</h2>
+                <div class="timer-display" id="timerDisplay">00:00:00</div>
+                <div class="button-group">
+                    <button onclick="startTimer()">▶ Start</button>
+                    <button onclick="pauseTimer()">⏸ Pause</button>
+                    <button onclick="resetTimer()">↻ Reset</button>
+                </div>
+                <div class="mini-stat">
+                    <span class="mini-stat-label">Daily Goal Progress</span>
+                    <span class="mini-stat-value" id="goalPercent">0%</span>
+                </div>
+                <div class="progress-bar-container" style="height: 35px; margin-bottom: 15px;">
+                    <div class="progress-bar" id="studyProgress">0%</div>
+                </div>
+                <div class="mini-stat">
+                    <span class="mini-stat-label">Weekly Total</span>
+                    <span class="mini-stat-value" id="weekTotal">0.0h</span>
+                </div>
+            </div>
+
+            <div class="card" style="animation-delay: 1.3s">
+                <h2>✅ Today's Tasks</h2>
+                <div class="todo-input">
+                    <input type="text" id="todoInput" placeholder="What needs to be done today?" onkeypress="if(event.key==='Enter') addTodo()">
+                    <button onclick="addTodo()">Add</button>
+                </div>
+                <div class="scroll-container" id="todoList"></div>
+            </div>
+
+            <div class="card" style="animation-delay: 1.4s">
+                <h2>🎯 My Goals</h2>
+                <div class="goal-input">
+                    <input type="text" id="goalInput" placeholder="What do you want to achieve?">
+                    <button onclick="addGoal()">Set Goal</button>
+                </div>
+                <div class="scroll-container" id="goalsList"></div>
+            </div>
+
+            <div class="card" style="animation-delay: 1.5s">
+                <h2>💭 Daily Reflection</h2>
+                <textarea id="journalEntry" placeholder="What did you learn today? How did you grow? What are you grateful for?"></textarea>
+                <button onclick="saveEntry()" style="margin-top: 15px; width: 100%;">💾 Save Entry</button>
+                <div class="scroll-container" id="entries" style="margin-top: 20px;"></div>
+            </div>
+
+            <div class="card full-width" style="animation-delay: 1.6s">
+                <h2>📖 Subject Progress</h2>
+                <div style="display: flex; gap: 12px; margin-bottom: 25px;">
+                    <input type="text" id="subjectName" placeholder="Subject name" style="flex: 2;">
+                    <input type="number" id="subjectHours" placeholder="Hours" min="0" step="0.5" style="flex: 1;">
+                    <button onclick="addSubject()">Add</button>
+                </div>
+                <div id="subjectsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let timerSeconds = 0;
+        let timerInterval = null;
+        let isRunning = false;
+        let todos = [];
+        let goals = [];
+        let entries = [];
+        let subjects = {};
+        let weeklyStudy = 0;
+
+        const motivationalQuotes = [
+            "Believe in yourself and magic will happen ✨",
+            "Every hour of study is an investment in your future 🌟",
+            "You are capable of amazing things 💫",
+            "Small steps every day lead to big dreams 🦋",
+            "Your potential is endless 🌸",
+            "Make today so awesome that yesterday gets jealous 💝",
+            "Study hard, dream big, achieve more 🎯",
+            "You are creating your own success story 📖",
+            "Progress, not perfection 🌺",
+            "Your dedication will pay off beautifully 🌷"
+        ];
+
+        function calculateYearProgress() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const startOfYear = new Date(year, 0, 1);
+            const endOfYear = new Date(year, 11, 31);
+            
+            const totalDays = Math.ceil((endOfYear - startOfYear) / (1000 * 60 * 60 * 24)) + 1;
+            const daysPassed = Math.ceil((now - startOfYear) / (1000 * 60 * 60 * 24));
+            const daysRemaining = totalDays - daysPassed;
+            const progress = ((daysPassed / totalDays) * 100).toFixed(1);
+
+            document.getElementById('daysPassed').textContent = daysPassed;
+            document.getElementById('daysRemaining').textContent = daysRemaining;
+            document.getElementById('yearProgress').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressBar').textContent = progress + '%';
+
+            updateMotivation();
+        }
+
+        function updateMotivation() {
+            const quote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+            document.getElementById('motivation').textContent = quote;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                timerInterval = setInterval(() => {
+                    timerSeconds++;
+                    updateTimerDisplay();
+                    updateStudyProgress();
+                }, 1000);
+            }
+        }
+
+        function pauseTimer() {
+            isRunning = false;
+            if (timerInterval) clearInterval(timerInterval);
+        }
+
+        function resetTimer() {
+            pauseTimer();
+            timerSeconds = 0;
+            updateTimerDisplay();
+            updateStudyProgress();
+        }
+
+        function updateTimerDisplay() {
+            const hours = Math.floor(timerSeconds / 3600);
+            const minutes = Math.floor((timerSeconds % 3600) / 60);
+            const seconds = timerSeconds % 60;
+            
+            document.getElementById('timerDisplay').textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        function updateStudyProgress() {
+            const hours = timerSeconds / 3600;
+            const progress = Math.min((hours / 8) * 100, 100).toFixed(1);
+            
+            document.getElementById('todayStudy').textContent = hours.toFixed(1) + 'h';
+            document.getElementById('studyProgress').style.width = progress + '%';
+            document.getElementById('studyProgress').textContent = progress + '%';
+            document.getElementById('goalPercent').textContent = progress + '%';
+            document.getElementById('weekTotal').textContent = (weeklyStudy + hours).toFixed(1) + 'h';
+        }
+
+        function addTodo() {
+            const input = document.getElementById('todoInput');
+            const text = input.value.trim();
+            
+            if (text) {
+                todos.push({ text, completed: false, id: Date.now() });
+                input.value = '';
+                displayTodos();
+            }
+        }
+
+        function displayTodos() {
+            const container = document.getElementById('todoList');
+            container.innerHTML = '';
+            
+            todos.forEach((todo, index) => {
+                const div = document.createElement('div');
+                div.className = 'todo-item' + (todo.completed ? ' completed' : '');
+                div.innerHTML = `
+                    <input type="checkbox" ${todo.completed ? 'checked' : ''} onchange="toggleTodo(${index})">
+                    <span>${todo.text}</span>
+                    <button class="delete-btn" onclick="deleteTodo(${index})">✕</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function toggleTodo(index) {
+            todos[index].completed = !todos[index].completed;
+            displayTodos();
+        }
+
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            displayTodos();
+        }
+
+        function addGoal() {
+            const input = document.getElementById('goalInput');
+            const text = input.value.trim();
+            
+            if (text) {
+                goals.push({ text, id: Date.now() });
+                input.value = '';
+                displayGoals();
+            }
+        }
+
+        function displayGoals() {
+            const container = document.getElementById('goalsList');
+            container.innerHTML = '';
+            
+            goals.forEach((goal, index) => {
+                const div = document.createElement('div');
+                div.className = 'goal-item';
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>${goal.text}</span>
+                        <button class="delete-btn" onclick="deleteGoal(${index})">✕</button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function deleteGoal(index) {
+            goals.splice(index, 1);
+            displayGoals();
+        }
+
+        function addSubject() {
+            const name = document.getElementById('subjectName').value.trim();
+            const hours = parseFloat(document.getElementById('subjectHours').value) || 0;
+            
+            if (name && hours > 0) {
+                subjects[name] = (subjects[name] || 0) + hours;
+                document.getElementById('subjectName').value = '';
+                document.getElementById('subjectHours').value = '';
+                displaySubjects();
+            }
+        }
+
+        function displaySubjects() {
+            const container = document.getElementById('subjectsList');
+            container.innerHTML = '';
+            
+            const total = Object.values(subjects).reduce((a, b) => a + b, 0);
+            
+            for (let [subject, hours] of Object.entries(subjects)) {
+                const percentage = total > 0 ? (hours / total * 100).toFixed(1) : 0;
+                const div = document.createElement('div');
+                div.className = 'subject-item';
+                div.innerHTML = `
+                    <div class="subject-name">${subject}: ${hours.toFixed(1)}h (${percentage}%)</div>
+                    <div class="progress-bar-container" style="height: 30px;">
+                        <div class="progress-bar" style="width: ${percentage}%">${percentage}%</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            }
+        }
+
+        function saveEntry() {
+            const text = document.getElementById('journalEntry').value.trim();
+            if (!text) {
+                alert('Please write something before saving! ✨');
+                return;
+            }
+
+            entries.unshift({
+                date: new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+                text: text
+            });
+
+            document.getElementById('journalEntry').value = '';
+            displayEntries();
+        }
+
+        function displayEntries() {
+            const container = document.getElementById('entries');
+            container.innerHTML = '';
+            
+            entries.slice(0, 3).forEach(entry => {
+                const div = document.createElement('div');
+                div.className = 'entry';
+                div.innerHTML = `
+                    <div class="entry-date">${entry.date}</div>
+                    <div>${entry.text}</div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        calculateYearProgress();
+        setInterval(calculateYearProgress, 60000);
+        setInterval(updateMotivation, 180000);
+    </script>
+</body>
+</html>
