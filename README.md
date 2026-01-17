@@ -1,7 +1,8 @@
 # Study Journey
 
 This repository documents my learning journey in programming and technology.  
-I use it to track progress, practice concepts, and build consistency over time.
+I use it to track progress, practice concepts, and build consistency over time. 
+and year countdown to see how much i can utlize my time
 
 # Purpose
 - Practice what I learn daily
