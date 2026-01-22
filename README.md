@@ -30,6 +30,6 @@ Quality and learning matter more than frequency.
 - Learn new languages and tools
 - Improve code readability and organization
 
-# 👤 Author
+# Author
 Snehal Narwade 
 
